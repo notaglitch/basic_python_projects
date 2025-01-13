@@ -12,3 +12,4 @@ def countdown_timer(seconds):
 
 seconds = int(input("Enter time in seconds: "))
 countdown_timer(seconds)
+
