@@ -22,11 +22,13 @@ def calculate():
 
 # Create the main window
 root = tk.Tk()
-root.title("Simple Calculator")
+root.title("Stylish Calculator")
+root.geometry("400x600")  # Set the window size
+root.config(bg="#333333")  # Set the background color
 
 # Entry widget for displaying expressions
-entry = tk.Entry(root, width=25, font=("Arial", 14), borderwidth=5, relief="sunken", justify="right")
-entry.grid(row=0, column=0, columnspan=4)
+entry = tk.Entry(root, width=16, font=("Arial", 24), borderwidth=5, relief="sunken", justify="right", bd=10, fg="white", bg="#444444")
+entry.grid(row=0, column=0, columnspan=4, padx=20, pady=20)
 
 # Button layout and configuration
 buttons = [
@@ -37,15 +39,28 @@ buttons = [
     ('C', 5, 0)
 ]
 
+# Button style
+button_style = {
+    'width': 5,
+    'height': 2,
+    'font': ("Arial", 18),
+    'relief': "flat",
+    'bd': 3,
+    'fg': "white",
+    'bg': "#555555",
+    'activebackground': "#888888",
+    'activeforeground': "black"
+}
+
 # Create buttons and place them in the grid
 for (text, row, col) in buttons:
     if text == '=':
-        button = tk.Button(root, text=text, width=5, height=2, font=("Arial", 14), command=calculate)
+        button = tk.Button(root, text=text, **button_style, command=calculate)
     elif text == 'C':
-        button = tk.Button(root, text=text, width=5, height=2, font=("Arial", 14), command=clear)
+        button = tk.Button(root, text=text, **button_style, command=clear)
     else:
-        button = tk.Button(root, text=text, width=5, height=2, font=("Arial", 14), command=lambda value=text: button_click(value))
-    button.grid(row=row, column=col, padx=5, pady=5)
+        button = tk.Button(root, text=text, **button_style, command=lambda value=text: button_click(value))
+    button.grid(row=row, column=col, padx=10, pady=10)
 
 # Run the application
 root.mainloop()
