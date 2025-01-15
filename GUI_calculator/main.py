@@ -1,16 +1,13 @@
 import tkinter as tk
 
-# Function to update the input field
 def button_click(value):
     current = entry.get()
     entry.delete(0, tk.END)
     entry.insert(tk.END, current + str(value))
 
-# Function to clear the input field
 def clear():
     entry.delete(0, tk.END)
 
-# Function to evaluate the expression
 def calculate():
     try:
         result = eval(entry.get())
@@ -20,17 +17,14 @@ def calculate():
         entry.delete(0, tk.END)
         entry.insert(tk.END, "Error")
 
-# Create the main window
 root = tk.Tk()
-root.title("Stylish Calculator")
-root.geometry("400x600")  # Set the window size
-root.config(bg="#333333")  # Set the background color
+root.title("Calculator")
+root.geometry("400x600")
+root.config(bg="#333333")
 
-# Entry widget for displaying expressions
 entry = tk.Entry(root, width=16, font=("Arial", 24), borderwidth=5, relief="sunken", justify="right", bd=10, fg="white", bg="#444444")
 entry.grid(row=0, column=0, columnspan=4, padx=20, pady=20)
 
-# Button layout and configuration
 buttons = [
     ('7', 1, 0), ('8', 1, 1), ('9', 1, 2), ('/', 1, 3),
     ('4', 2, 0), ('5', 2, 1), ('6', 2, 2), ('*', 2, 3),
@@ -39,7 +33,6 @@ buttons = [
     ('C', 5, 0)
 ]
 
-# Button style
 button_style = {
     'width': 5,
     'height': 2,
@@ -52,7 +45,6 @@ button_style = {
     'activeforeground': "black"
 }
 
-# Create buttons and place them in the grid
 for (text, row, col) in buttons:
     if text == '=':
         button = tk.Button(root, text=text, **button_style, command=calculate)
@@ -62,5 +54,4 @@ for (text, row, col) in buttons:
         button = tk.Button(root, text=text, **button_style, command=lambda value=text: button_click(value))
     button.grid(row=row, column=col, padx=10, pady=10)
 
-# Run the application
 root.mainloop()
