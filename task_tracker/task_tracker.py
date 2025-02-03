@@ -1,10 +1,8 @@
-command = input(">>> ")
+import argparse
+import os
+import json
 
+TASK_FILE = 'tasks.json'
 
-match command:
-    case "add":
-        print("adding task...")
-    case "edit":
-        print("editing task...")
-    case "done":
-        print("removing task...")
+def load_tasks():
+    if not os.path.exists(TASK_FILE)
