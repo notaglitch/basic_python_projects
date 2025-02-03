@@ -66,3 +66,8 @@ def main():
         view_tasks()
     elif args.command == "delete":
         delete_task(args.task_id)
+    else:
+        print("Please use one of the following commands: add, view, delete")
+
+if __name__ == "__main__":
+    main()
